@@ -1,78 +1,347 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio - Nasreddine Cherni</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; padding: 0;
-            background: #f5f5f5;
-            color: #222;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #1a73e8;
-        }
-        section {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-        ul { margin-left: 20px; }
-        .contact a { color: #1a73e8; text-decoration: none; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Nasreddine Cherni</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #1e4d6b;
+      --primary-light: #2fa7c6;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 20px;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4f9 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 70px 0 40px;
+    }
+
+    .hero-card {
+      background:
+        radial-gradient(circle at top right, rgba(47,167,198,0.18), transparent 30%),
+        linear-gradient(135deg, rgba(30,77,107,1) 0%, rgba(47,167,198,1) 100%);
+      color: white;
+      border-radius: 28px;
+      padding: 42px 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2.4rem;
+    }
+
+    .hero h2 {
+      margin: 0 0 18px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 800px;
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-links a {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.22);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .hero-links a:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.24);
+    }
+
+    .section {
+      margin: 24px 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .section h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: 1.35rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fbfdff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .card h4 {
+      margin: 0 0 8px;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .skill-box {
+      background: #fbfdff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .skill-box strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .contact a,
+    .project-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .contact a:hover,
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 26px 0 40px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid,
+      .skills {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-card {
+        padding: 30px 22px;
+      }
+
+      .section {
+        padding: 22px;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
 
-    <h1>Nasreddine Cherni</h1>
-    <h3>Développeur Web & Mobile</h3>
+  <div class="container">
+    <header class="hero">
+      <div class="hero-card">
+        <h1>Nasreddine Cherni</h1>
+        <h2>Développeur Web, Mobile, Backend & IA</h2>
+        <p>
+          Étudiant en Licence en Technologies de l’Informatique, spécialité Développement des Systèmes d’Information,
+          intéressé par le développement web, mobile, backend et l’intelligence artificielle.
+          Polyvalent, rigoureux et adaptable, je suis capable d’étudier, de comprendre et de contribuer efficacement
+          à des projets informatiques variés.
+        </p>
 
-    <section>
-        <h2>À propos</h2>
-        <p>Étudiant en 3ᵉ année en Développement des Systèmes d’Information à l’ISET Charguia. Passionné par 
-        le développement web et mobile, motivé, sérieux et capable d’apprendre rapidement.</p>
+        <div class="hero-links">
+          <a href="mailto:nasro.cherni1919@gmail.com">Email</a>
+          <a href="https://github.com/nasrocherni" target="_blank">GitHub</a>
+          <a href="https://nasrocherni.github.io/Eportfolio" target="_blank">Portfolio</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h3>À propos</h3>
+      <p>
+        Je suis étudiant à l’Institut Supérieur des Technologies de l’Informatique de Charguia,
+        spécialisé en Développement des Systèmes d’Information. Je m’intéresse particulièrement
+        aux applications web et mobiles, aux architectures backend, ainsi qu’aux solutions basées
+        sur l’intelligence artificielle.
+      </p>
     </section>
 
-    <section>
-        <h2>Expériences</h2>
-        <ul>
-            <li><strong>2025 – ATB | Stage de perfectionnement</strong> : React, Django, JWT, UML, Postman</li>
-            <li><strong>2024 – ATB | Stage d’initiation</strong> : maintenance informatique, réseau, support</li>
-        </ul>
-    </section>
+    <section class="section">
+      <h3>Expériences</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Stage de fin d’études (PFE) – BIAT IT</h4>
+          <div class="meta">2025 – en cours | Développement Full Stack & IA</div>
+          <ul>
+            <li>Développement d’une solution intelligente de vérification de signatures bancaires.</li>
+            <li>Extraction de données et détection de signatures via l’API OpenAI.</li>
+            <li>Comparaison de signatures via un modèle CNN/ML avec score de similarité.</li>
+            <li>Gestion des utilisateurs, rôles, documents, validation humaine et audit logs.</li>
+            <li><strong>Projet privé</strong> réalisé dans un contexte professionnel chez BIAT IT.</li>
+          </ul>
+        </div>
 
-    <section>
-        <h2>Projets réalisations</h2>
-        <ul>
-            <li><strong>Smatch</strong> : React Native, React.js, Node.js, MongoDB</li>
-            <li><strong>Gestion de tickets</strong> : Django + React.js, JWT, rôles</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Compétences</h2>
-        <ul>
-            <li><strong>Langages :</strong> Java, JavaScript, TypeScript, Python, PHP</li>
-            <li><strong>Frameworks :</strong> React, React Native, Node.js, Express, Django, Spring Boot</li>
-            <li><strong>Bases :</strong> MySQL, MongoDB</li>
-            <li><strong>Outils :</strong> GitHub, Postman, VS Code</li>
-        </ul>
-    </section>
-
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>Email : <a href="mailto:nasro.cherni1919@gmail.com">nasro.cherni1919@gmail.com</a></p>
-        <p>GitHub : <a href="https://github.com/nasrocherni">github.com/nasrocherni</a></p>
-        <p>Portfolio : <a href="https://nasrocherni.github.io/Eportfolio">nasrocherni.github.io/Eportfolio</a></p>
-    </section>
-
+        <div class="card">
+  <h4>Stage de perfectionnement – ATB</h4>
+  <div class="meta">Janvier 2025 | Développement Full Stack</div>
+  <ul>
+    <li>Participation au développement d’une application web de gestion de tickets et de livraisons (<strong>Delivery Manager</strong>).</li>
+    <li>Développement frontend avec React.js et backend avec Django.</li>
+    <li>Authentification JWT et gestion des rôles.</li>
+    <li>Conception UML et tests API avec Postman.</li>
+  </ul>
+  <p>
+    <a class="project-link" href="https://github.com/nasrocherni/deliveryManger" target="_blank">Voir le dépôt GitHub</a>
+  </p>
 </div>
+
+        <div class="card">
+          <h4>Stage d’initiation – ATB</h4>
+          <div class="meta">Janvier 2024</div>
+          <ul>
+            <li>Maintenance du parc informatique et des équipements réseau.</li>
+            <li>Support technique et résolution de pannes matérielles et logicielles.</li>
+            <li>Découverte de l’environnement bancaire et des bonnes pratiques de sécurité.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>Formation</h4>
+          <div class="meta">ISET Charguia</div>
+          <ul>
+            <li>Licence en Technologies de l’Informatique – DSI.</li>
+            <li>Baccalauréat en Informatique.</li>
+            <li>Formation Full Stack Crococoder (Angular & Spring Boot).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Projets</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Social Dev</h4>
+          <div class="meta">Projet académique | Réseau social d’apprentissage collaboratif</div>
+          <ul>
+            <li>Plateforme sociale dédiée aux développeurs.</li>
+            <li>Authentification, publications, commentaires, réactions et fil d’actualité.</li>
+            <li>Espaces collaboratifs, favoris, intégration GitHub et gamification.</li>
+            <li>Fonctionnalités avancées : mentorat, assistant IA, recommandations IA et statistiques.</li>
+          </ul>
+          <p>
+            <a class="project-link" href="https://github.com/SocialDevWeb" target="_blank">Voir le projet sur GitHub</a>
+          </p>
+        </div>
+
+        
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>Compétences</h3>
+      <div class="skills">
+        <div class="skill-box">
+          <strong>Langages</strong>
+          Python, Java, JavaScript, TypeScript, PHP, SQL
+        </div>
+        <div class="skill-box">
+          <strong>Frameworks & Technologies</strong>
+          Angular, React.js, Node.js, Express.js, Django, Spring Boot, Flutter
+        </div>
+        <div class="skill-box">
+          <strong>Bases de données</strong>
+          MySQL, MongoDB, SQLite
+        </div>
+        <div class="skill-box">
+          <strong>Outils & Méthodes</strong>
+          Git, GitHub, Postman, StarUML, REST API, UML, Scrum, CRISP-DM
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact">
+      <h3>Contact</h3>
+      <p>Email : <a href="mailto:nasro.cherni1919@gmail.com">nasro.cherni1919@gmail.com</a></p>
+      <p>GitHub : <a href="https://github.com/nasrocherni" target="_blank">github.com/nasrocherni</a></p>
+      <p>Portfolio : <a href="https://nasrocherni.github.io/Eportfolio" target="_blank">nasrocherni.github.io/Eportfolio</a></p>
+    </section>
+
+    <footer>
+      © 2026 Nasreddine Cherni - Portfolio personnel
+    </footer>
+  </div>
+
 </body>
 </html>
